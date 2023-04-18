@@ -1,0 +1,30 @@
+{% load static %}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}Djangoshop{% endblock %}</title>
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+    <a href="/" class="logo">Djangoshop</a>
+</div>
+<div id="subheader">
+    <div class="cart">{% with total_items=cart|length %}
+         {% if cart|length > 0 %}
+             Сумма:
+             <a href="{% url 'cart:cart_detail' %}">
+
+                 ₽{{ cart.get_total_price }}</a>
+        {% else %}
+            Корзина пуста
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+<div id="content">
+{% block content %}{% endblock %}
+</div>
+</body>
+</html>
