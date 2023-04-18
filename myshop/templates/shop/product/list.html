@@ -3,6 +3,7 @@
 {% block title %}
 {% if category %}{{ category.name }}{% else %}Товары{% endif %}
 {% endblock %}
+{% load cache %}
 {% block content %}
 <div id="sidebar">
 <h3>Категории:</h3>
@@ -19,6 +20,7 @@
 </div>
 <div id="main" class="product-list">
     <h1>{% if category %}{{ category.name }}{% else %}Ассортимент{% endif %}</h1>
+    {% cache 60 list %}
     {% for product in products %}
     <div class="item">
         <a href="{{ product.get_absolute_url }}">
@@ -28,5 +30,6 @@
         ₽{{ product.price }}
     </div>
     {% endfor %}
+    {% endcache %}
 </div>
 {% endblock %}
