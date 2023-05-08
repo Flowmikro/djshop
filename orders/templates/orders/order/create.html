@@ -8,7 +8,7 @@
   <h3>Ваш заказ</h3>
   <ul>
     {% for item in cart %}
-      <li>{{ item.quantity }}x {{ item.product.name }} <span>₽{{ item.total_price }}</span></li>
+      <li>{{ item.quantity }}шт {{ item.product.name }} <span>₽{{ item.total_price }}</span></li>
     {% endfor %}
   </ul>
   <p>Итого: ₽{{ cart.get_total_price }}</p>
