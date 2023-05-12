@@ -1,8 +1,9 @@
 from decimal import Decimal
-from django.test import TestCase
+from django.test import TestCase, SimpleTestCase
 from .models import Category, Product
 
 
+# тест моделей в myshop/models.py
 class CategoryModelTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -83,4 +84,6 @@ class ProductModelTestCase(TestCase):
     def test_product_get_absolute_url(self):
         result = Product.objects.get(id=1)
         self.assertEquals(result.get_absolute_url(), '/1/test')
+
+
 
